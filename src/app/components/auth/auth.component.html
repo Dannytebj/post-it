@@ -1,0 +1,20 @@
+<div class="landing-wrapper">
+    <div class="landing-left">
+        <div class="auth-form-wrapper">
+            <h2> {{ title }} </h2>
+            <div *ngIf="isSignIn; else signup">
+                <app-dynamic-form [fields]="signInConfig" (submit)="submit($event)">
+                </app-dynamic-form>
+                <div style="margin-top: 10px;">Not Registered? <a mat-button (click)= "toggleForm()">Sign Up</a></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="landing-right">Right</div>
+</div>
+<ng-template #signup>
+    <app-dynamic-form [fields]="signupConfig" (submit)="submit($event)">
+    </app-dynamic-form>
+    <div style="margin-top: 10px;">Already Registered? <a mat-button (click) = "toggleForm()">Sign In</a></div>
+</ng-template>

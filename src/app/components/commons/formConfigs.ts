@@ -14,7 +14,7 @@ export const formConfig = {
       },
       {
         name: 'pattern',
-        validator: Validators.pattern('^[a-zA-Z]+$'),
+        validator: Validators.pattern('^[a-zA-Z ]*$'),
         message: 'Name must be alphabets'
       }
     ]

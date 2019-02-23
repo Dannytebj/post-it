@@ -5,7 +5,7 @@ import { Directive,
         OnInit,
         ViewContainerRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FieldConfig } from './../../field.interface';
+import { FieldConfig } from '../../shared/interfaces/field.interface';
 import { InputComponent } from './../commons/input/input.component';
 import { ButtonComponent } from './../commons/button/button.component';
 

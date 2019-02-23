@@ -9,6 +9,7 @@ import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { ToastrModule } from 'ngx-toastr';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
@@ -43,6 +44,7 @@ import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.com
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    ToastrModule.forRoot()
   ],
   entryComponents: [
     InputComponent,

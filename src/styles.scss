@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+@import '~ngx-toastr/toastr.css';
 // font-family: 'Montserrat', sans-serif;
 // font-family: 'Raleway', sans-serif;
 // font-family: 'PT Sans', sans-serif;
@@ -33,5 +35,15 @@ body {
     width: 65%;
     background: url('../src/assets/img/ch.jpg') no-repeat;
     background-size: cover;
+  }
+}
+@media only screen and ( max-width: 600px) {
+  .landing-wrapper {
+    .landing-left {
+      width: 100%;
+    }
+    .landing-right {
+      display: none;
+    }
   }
 }

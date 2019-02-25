@@ -1,0 +1,30 @@
+
+.dashboard-wrapper {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  .sidebar-dashboard {
+    width: 25%;
+    background: #443266;  /* fallback for old browsers */
+    color: white;
+  }
+  .main-content {
+    width: 75%;
+  }
+  .group-name{
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+  }
+  .group-wrapper {
+    :hover {
+      background: #4f3e70;
+      cursor: pointer;
+    }
+  }
+}
+
+// Considered colors
+    // background: -webkit-linear-gradient(to right, #9733EE, #DA22FF);  /* Chrome 10-25, Safari 5.1-6 */
+    // background: linear-gradient(to right, #9733EE, #DA22FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    // background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);

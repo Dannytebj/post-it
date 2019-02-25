@@ -1,3 +1,36 @@
-<p>
-  dashboard works!
-</p>
+<!-- <div class="dashboard-wrapper">
+  <div class="sidebar-dashboard">SideBar</div>
+  <div class="page-content">Main</div>
+</div> -->
+<mat-drawer-container class="dashboard-wrapper">
+    <mat-drawer mode="side" class="sidebar-dashboard" #drawer opened>
+        <mat-tab-group mat-stretch-tabs class="side-tabs" [color] ="white">
+            <mat-tab>
+              <ng-template mat-tab-label class="tab-label">
+                <mat-icon class="tab-icon">ballot</mat-icon>
+                Groups
+              </ng-template>
+              <mat-list>
+                <mat-list-item *ngFor="let group of groups" class="group-wrapper" [routerLink]="[{ outlets: {chat: ['group', group.id]}}]">
+                      <mat-icon mat-list-icon>people</mat-icon>
+                      <p mat-line class="group-name">{{ group.name }}</p>
+                      <mat-divider></mat-divider>
+                  </mat-list-item>
+              </mat-list>
+            </mat-tab>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon">add_circle</mat-icon>
+                Create Group
+              </ng-template>
+              Content 2
+            </mat-tab>
+          </mat-tab-group>
+
+      
+    </mat-drawer>
+    <mat-drawer-content class="main-content">
+      <a mat-icon-button (click) = "drawer.toggle()"><mat-icon>last_page</mat-icon></a>
+        <router-outlet name="chat"></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

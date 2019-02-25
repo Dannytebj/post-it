@@ -8,9 +8,21 @@
 // font-family: 'Ubuntu', sans-serif;
 body {
   margin: 0;
+  :focus{
+    outline: none !important;
+  }
   mat-form-field.mat-form-field {
     font-size: 14px;
     width: 100%;
+  }
+  .mat-tab-labels {
+    background: #4f3e70;
+    .mat-tab-label-content{
+      color: white;
+    }
+  }
+  .mat-list-icon{
+    color: white !important;
   }
   .mat-raised-button {
     margin-top: 10px;

@@ -9,8 +9,6 @@ import { User } from './../interfaces/user.interface';
 })
 export class AuthService {
   currentUser: any;
-  isLoggedIn = false;
-
   constructor(
     public firestore: AngularFirestore,
     public fireAuth: AngularFireAuth,
@@ -21,20 +19,22 @@ export class AuthService {
     this.fireAuth.authState.subscribe(user => {
       if (user) {
         this.currentUser = user;
-        this.isLoggedIn = true;
         localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
         JSON.parse(localStorage.getItem('currentUser'));
       } else {
-        this.isLoggedIn = false;
         localStorage.setItem('currentUser', null);
         JSON.parse(localStorage.getItem('currentUser'));
       }
     });
    }
+   get isLoggedIn(): boolean {
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    return (user !== null) ? true : false;
+  }
+
    signIn(email, password) {
      return this.fireAuth.auth.signInWithEmailAndPassword(email, password)
       .then(response => {
-        this.isLoggedIn = true;
         this.redirectToDashboard();
         this.setUserData(response.user, '');
       })
@@ -47,7 +47,6 @@ export class AuthService {
    signUp(email, password, name) {
      return this.fireAuth.auth.createUserWithEmailAndPassword(email, password)
       .then(response => {
-        this.isLoggedIn = true;
         this.redirectToDashboard();
         this.setUserData(response.user, name);
       })

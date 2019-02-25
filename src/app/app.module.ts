@@ -21,6 +21,7 @@ import { InputComponent } from './components/commons/input/input.component';
 import { ButtonComponent } from './components/commons/button/button.component';
 import { DynamicFieldDirective } from './components/dynamic-field/dynamic-field.directive';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
+import { GroupComponent } from './components/group/group.component';
 
 
 
@@ -32,7 +33,8 @@ import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.com
     InputComponent,
     ButtonComponent,
     DynamicFieldDirective,
-    DynamicFormComponent
+    DynamicFormComponent,
+    GroupComponent
   ],
   imports: [
     BrowserModule,

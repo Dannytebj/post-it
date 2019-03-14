@@ -10,7 +10,7 @@ const generateToken = require('../utils/generateToken');
  * @param {*} next
  * @returns
  */
-exports.create = async (req, res, next) => {
+exports.createUser = async (req, res, next) => {
   const { email, name } = req.body;
   try {
     const user = await User.findOne({ email })

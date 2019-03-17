@@ -6,14 +6,35 @@
     <mat-drawer mode="side" class="sidebar-dashboard" #drawer opened>
         <div class="side-tabs">
           <div class="side-header">
-            <h4>Groups</h4>
-          <button 
+            <!-- <h4>Groups</h4> -->
+            <mat-accordion>
+                <mat-expansion-panel (closed)= "resetForm()" hideToggle>
+                    <mat-expansion-panel-header >
+                      <mat-panel-title>
+                        Groups
+                      </mat-panel-title>
+                      <mat-panel-description>
+                        <mat-icon matTooltip="Create a group" class="example-tab-icon" color="white">add_circle</mat-icon>
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
+                
+                    <mat-form-field>
+                      <input matInput placeholder="Enter Group Name" [formControl]="createGroupForm" >
+                      <mat-error *ngIf="createGroupForm.hasError('required')">
+                          Group name is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <button mat-raised-button (click)= "createGroup()">Create</button>
+                  </mat-expansion-panel>
+              </mat-accordion>
+              
+          <!-- <button 
             mat-icon-button
             matTooltip="Create a group"
             (click) = "openDialog()"
           >
-            <mat-icon class="example-tab-icon" color="white">add_circle</mat-icon>
-          </button>
+            <mat-icon class="example-tab-icon" color="white">add_circle</mat-icon> 
+          </button>-->
           </div>
               <mat-list>
                 <mat-list-item *ngFor="let group of groups" class="group-wrapper" [routerLink]="[{ outlets: {chat: ['group', group.id]}}]">

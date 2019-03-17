@@ -1,7 +1,7 @@
-import { AllResponse } from './../../shared/interfaces/response.interface';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { GroupService } from 'src/app/shared/services/group.service';
+import { AllResponse } from './../../shared/interfaces/response.interface';
 
 @Component({
   selector: 'app-create-group-modal',

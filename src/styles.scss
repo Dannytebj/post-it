@@ -21,6 +21,29 @@ body {
       cursor: pointer;
     }
   }
+  mat-accordion {
+    width: 100%;
+    .mat-expansion-panel {
+      background: #443266;
+      .mat-expansion-panel-header-title,
+      .mat-expansion-panel-header-description {
+        color: #ffffff;
+      }
+      .mat-form-field-empty.mat-form-field-label {
+        color: white;
+    }
+    .mat-form-field-underline {
+      background-color: white !important;
+  }
+    mat-form-field {
+      color: white;
+    }
+    }
+    mat-panel-title {
+      flex: 1 1 auto;
+      width: 80%;
+    }
+  }
   .mat-tab-labels {
     background: #4f3e70;
     .mat-tab-label-content{

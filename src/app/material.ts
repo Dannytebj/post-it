@@ -8,7 +8,8 @@ import {
   MatListModule,
   MatTooltipModule,
   MatDialogModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatProgressSpinnerModule
  } from '@angular/material';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -25,7 +26,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatListModule,
     MatTooltipModule,
     MatDialogModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatButtonModule,
@@ -38,7 +40,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatListModule,
     MatTooltipModule,
     MatDialogModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatProgressSpinnerModule
   ]
 })
 export class MaterialModule { }

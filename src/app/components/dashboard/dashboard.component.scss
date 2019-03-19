@@ -18,14 +18,33 @@
     }
   }
   .main-content {
-    width: 75%;
+    width: 100%;
   }
   .group-name{
     text-decoration: none;
     color: white;
-    padding: 20px;
+    padding: 0 20px;
+  }
+  .spinner {
+    margin: 50% 25%;
+  }
+  .toggler {
+    position: absolute;
   }
 
+}
+@media only screen and ( max-width: 600px) {
+  .dashboard-wrapper {
+    .toggler {
+      display:inline;
+    }
+    .sidebar-dashboard {
+      width: 50%;
+    }
+    .main-content {
+      width: 100%;
+    }
+  }
 }
 
 // Considered colors

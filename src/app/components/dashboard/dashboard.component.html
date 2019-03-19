@@ -3,7 +3,7 @@
   <div class="page-content">Main</div>
 </div> -->
 <mat-drawer-container class="dashboard-wrapper">
-    <mat-drawer mode="side" class="sidebar-dashboard" #drawer opened>
+  <mat-drawer mode="side" class="sidebar-dashboard" #drawer opened>
         <div class="side-tabs">
           <div class="side-header">
             <!-- <h4>Groups</h4> -->
@@ -36,17 +36,26 @@
             <mat-icon class="example-tab-icon" color="white">add_circle</mat-icon> 
           </button>-->
           </div>
-              <mat-list>
-                <mat-list-item *ngFor="let group of groups" class="group-wrapper" [routerLink]="[{ outlets: {chat: ['group', group.id]}}]">
+              <mat-list *ngIf="!loading; else loader;">
+                <mat-list-item *ngFor="let group of groups" class="group-wrapper" [routerLink]="[{ outlets: {chat: ['group', group._id]}}]">
                       <mat-icon mat-list-icon>people</mat-icon>
                       <p mat-line class="group-name">{{ group.name }}</p>
                       <mat-divider></mat-divider>
                   </mat-list-item>
               </mat-list>
           </div>
-    </mat-drawer>
-    <mat-drawer-content class="main-content">
-      <a mat-icon-button (click) = "drawer.toggle()"><mat-icon>last_page</mat-icon></a>
+        </mat-drawer>
+        <mat-drawer-content class="main-content">
+          <a mat-icon-button class="toggler" (click) = "drawer.toggle()"><mat-icon>last_page</mat-icon></a>
         <router-outlet name="chat"></router-outlet>
     </mat-drawer-content>
 </mat-drawer-container>
+
+<ng-template #loader>
+    <mat-progress-spinner
+      class="spinner"
+      color="primary"
+      mode="indeterminate"
+    >
+    </mat-progress-spinner>
+</ng-template>

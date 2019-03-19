@@ -16,6 +16,11 @@ body {
     width: 100%;
   }
   mat-list-item {
+    // .mat-list-text {
+    //   :hover {
+    //     height: 100%;
+    //   }
+    // }
     :hover {
       background: #4f3e70;
       cursor: pointer;
@@ -77,8 +82,12 @@ body {
     background: url('../src/assets/img/ch.jpg') no-repeat;
     background-size: cover;
   }
+
 }
 @media only screen and ( max-width: 600px) {
+  .mat-expansion-panel:not(.mat-expanded):not([aria-disabled=true]) .mat-expansion-panel-header:hover{
+    background: none;
+  }
   .landing-wrapper {
     .landing-left {
       width: 100%;
@@ -86,5 +95,8 @@ body {
     .landing-right {
       display: none;
     }
+  }
+  .toggler {
+    display:block;
   }
 }

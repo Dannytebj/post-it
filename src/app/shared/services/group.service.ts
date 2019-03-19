@@ -29,4 +29,7 @@ private createGroupSubject = new Subject<any>();
   getGroup() {
     return this.createGroupSubject.asObservable();
   }
+  getUsersGroups() {
+    return this.authService.http.get(`${this.baseUrl}user/groups`, { headers: this.header});
+  }
 }

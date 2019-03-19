@@ -1,0 +1,23 @@
+.group-chat-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  .chat-header {
+    background: #cccccc;
+    height: 5vh;
+    width: 100%;
+    display: flex;
+    .header-title {
+      margin-left: 50px;
+      align-self: center;
+    }
+  }
+  .chat-body {
+    height: 80vh;
+  }
+  .chat-footer {
+    background: #cccccc;
+    height: 15vh;
+  }
+}

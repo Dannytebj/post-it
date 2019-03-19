@@ -12,14 +12,14 @@ import { AllResponse } from '../interfaces/response.interface';
 export class AuthService {
   currentUser: any;
   baseUrl = 'http://localhost:3333/api/v1/';
-  header: HttpHeaders;
+  public header: HttpHeaders;
   constructor(
     public firestore: AngularFirestore,
     public fireAuth: AngularFireAuth,
     public router: Router,
     public ngZone: NgZone,
     public toastr: ToastrService,
-    private http: HttpClient
+    public http: HttpClient
   ) {
     this.fireAuth.authState.subscribe(user => {
       if (user) {
@@ -31,6 +31,9 @@ export class AuthService {
         JSON.parse(localStorage.getItem('currentUser'));
       }
     });
+  }
+  get authHeader() {
+    return this.header;
   }
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('currentUser'));

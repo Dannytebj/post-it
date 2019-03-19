@@ -7,12 +7,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./group.component.scss']
 })
 export class GroupComponent implements OnInit {
-groupId: number;
+groupId: string;
   constructor(public route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.groupId = +params['id'];
+      this.groupId = params['id'];
       console.log(this.groupId);
     });
   }

@@ -18,6 +18,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthComponent } from './components/auth/auth.component';
 // Services
 import { AuthService } from './shared/services/auth.service';
+import { MessageService } from './shared/services/message.service';
 import { GroupService } from './shared/services/group.service';
 import { InputComponent } from './components/commons/input/input.component';
 import { ButtonComponent } from './components/commons/button/button.component';
@@ -60,7 +61,8 @@ import { CreateGroupModalComponent } from './components/create-group-modal/creat
   ],
   providers: [
     AuthService,
-    GroupService
+    GroupService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

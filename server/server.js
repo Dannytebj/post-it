@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const path = require('path');
+const socketio = require('socket.io');
+const { socketInstance } = require('./utils/socketConfig');
 
 dotenv.config();
 
@@ -44,8 +46,17 @@ app.use((err, req, res, next) => {
 // })
 
 // start the server in the port || 3333 !
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log('server listening on port '+port);
 });
+
+const io = socketio(server);
+io.on('connection', (socket) => {
+  console.log('Socket io connected');
+  socket.on('disconnect', ()=> {
+    console.log('Socket io disconnected!')
+  })
+});
+socketInstance(io);
 
 module.exports = app;

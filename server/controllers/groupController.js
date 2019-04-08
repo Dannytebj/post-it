@@ -103,7 +103,7 @@ exports.group = async (req, res, next) => {
       });
     }
     const group = await Group.findOne({ _id: id })
-      .populate('messages', 'message _id')
+      .select('-messages')
       .populate('users', '-groups')
       .populate('createdBy', 'name');
 

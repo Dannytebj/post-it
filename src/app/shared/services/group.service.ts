@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AuthService } from './auth.service';
+import { BaseService } from './base.service';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable({
@@ -12,24 +12,44 @@ baseUrl = 'http://localhost:3333/api/v1/';
 private createGroupSubject = new Subject<any>();
 
   constructor(
-    public authService: AuthService,
+    public baseService: BaseService,
     ) {
       const token = localStorage.getItem('token');
       this.header = new HttpHeaders().set('token', token);
     }
 
+  /**
+   * Creates a broadcast group
+   *
+   * @param {string} name
+   * @returns {Observable}
+   * @memberof GroupService
+   */
   createGroup(name) {
-    return this.authService.http.post(`${this.baseUrl}group/create`, { name }, { headers: this.header});
+    return this.baseService.http.post(`${this.baseUrl}group/create`, { name }, { headers: this.baseService.header });
   }
 
   updateGroups(group) {
     this.createGroupSubject.next(group);
   }
 
-  getGroup() {
-    return this.createGroupSubject.asObservable();
-  }
+  /**
+   * Gets a users groups
+   *
+   * @returns {Observable}
+   * @memberof GroupService
+   */
   getUsersGroups() {
-    return this.authService.http.get(`${this.baseUrl}user/groups`, { headers: this.header});
+    return this.baseService.http.get(`${this.baseUrl}user/groups`, { headers: this.baseService.header });
+  }
+  /**
+   * Gets a groups data by id
+   *
+   * @param {string} id
+   * @returns {Observable}
+   * @memberof GroupService
+   */
+  getGroup(id) {
+    return this.baseService.http.get(`${this.baseUrl}group/${id}`, { headers: this.baseService.header });
   }
 }

@@ -26,6 +26,7 @@ import { DynamicFieldDirective } from './components/dynamic-field/dynamic-field.
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { GroupComponent } from './components/group/group.component';
 import { CreateGroupModalComponent } from './components/create-group-modal/create-group-modal.component';
+import { ClickElseWhereDirective } from './shared/directives/click-else-where.directive';
 
 
 
@@ -39,7 +40,8 @@ import { CreateGroupModalComponent } from './components/create-group-modal/creat
     DynamicFieldDirective,
     DynamicFormComponent,
     GroupComponent,
-    CreateGroupModalComponent
+    CreateGroupModalComponent,
+    ClickElseWhereDirective
   ],
   imports: [
     BrowserModule,

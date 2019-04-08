@@ -13,6 +13,7 @@ import {
  } from '@angular/material';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatTooltipModule,
     MatDialogModule,
     MatExpansionModule,
+    PickerModule,
     MatProgressSpinnerModule
   ],
   exports: [
@@ -41,6 +43,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatTooltipModule,
     MatDialogModule,
     MatExpansionModule,
+    PickerModule,
     MatProgressSpinnerModule
   ]
 })

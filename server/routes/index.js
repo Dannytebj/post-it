@@ -1,7 +1,7 @@
 const express = require('express');
 const { createUser, getUserToken } = require('../controllers/usersController');
 const { createGroup, groups, groupUsers, group } = require('../controllers/groupController');
-const { createMessage } = require('../controllers/messageController');
+const { createMessage, getMessages } = require('../controllers/messageController');
 const { validateUser, validateToken, groupValidator, messageValidator } = require('../middlewares/validators');
 
 const router = express.Router();
@@ -15,5 +15,6 @@ router.get('/group/users/:id', validateToken, groupUsers);
 router.get('/group/:id', validateToken, group);
 
 router.post('/message', validateToken, messageValidator, createMessage);
+router.get('/messages/:groupId', validateToken, getMessages);
 
 module.exports = router;

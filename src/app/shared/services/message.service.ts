@@ -1,21 +1,26 @@
 import { Injectable } from '@angular/core';
+import { AuthService } from './auth.service';
 import * as io from 'socket.io-client';
+import { BaseService } from './base.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
   private url = 'http://localhost:3333';
-  private socket;
+  public socket;
 
-  constructor() {
+  constructor(
+    public authService: AuthService,
+    public baseService: BaseService
+  ) {
     this.socket = io(this.url);
   }
 
-  public getNewMessage(groupId) {
-    console.log(groupId, 'Message Service');
-    this.socket.on(`message:${groupId}`, (message) => {
-      console.log(message);
-    });
+  getMessages(groupId) {
+    return this.baseService.http.get(`${this.baseService.url}/messages/${groupId}`, { headers: this.baseService.header });
+  }
+  sendMessage(message, groupId) {
+    return this.baseService.http.post(`${this.baseService.url}/message`, {message, groupId }, { headers: this.baseService.header});
   }
 }

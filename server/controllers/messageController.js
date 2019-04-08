@@ -31,3 +31,25 @@ exports.createMessage = async (req, res, next) => {
     next(error);
   }
 }
+exports.getMessages = async (req, res, next) => {
+  const { groupId } = req.params;
+  try {
+    const groupExists = await Group.findOne({ _id: groupId });
+    if (!groupExists) {
+      return res.status(404).send({
+        message: 'This group does not exist',
+      });
+    }
+    const data = await Group.findOne({ _id: groupId })
+      .populate('messages', '-group -updatedAt');
+
+    return res.status(200).send({
+      message: 'Fetched successfully',
+      messages: data.messages
+    }); 
+
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+}

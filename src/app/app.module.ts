@@ -18,6 +18,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthComponent } from './components/auth/auth.component';
 // Services
 import { AuthService } from './shared/services/auth.service';
+import { MessageService } from './shared/services/message.service';
 import { GroupService } from './shared/services/group.service';
 import { InputComponent } from './components/commons/input/input.component';
 import { ButtonComponent } from './components/commons/button/button.component';
@@ -25,6 +26,7 @@ import { DynamicFieldDirective } from './components/dynamic-field/dynamic-field.
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { GroupComponent } from './components/group/group.component';
 import { CreateGroupModalComponent } from './components/create-group-modal/create-group-modal.component';
+import { ClickElseWhereDirective } from './shared/directives/click-else-where.directive';
 
 
 
@@ -38,7 +40,8 @@ import { CreateGroupModalComponent } from './components/create-group-modal/creat
     DynamicFieldDirective,
     DynamicFormComponent,
     GroupComponent,
-    CreateGroupModalComponent
+    CreateGroupModalComponent,
+    ClickElseWhereDirective
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,8 @@ import { CreateGroupModalComponent } from './components/create-group-modal/creat
   ],
   providers: [
     AuthService,
-    GroupService
+    GroupService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

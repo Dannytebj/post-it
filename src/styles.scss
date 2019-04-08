@@ -15,15 +15,29 @@ body {
     font-size: 14px;
     width: 100%;
   }
-  mat-list-item {
-    // .mat-list-text {
-    //   :hover {
-    //     height: 100%;
-    //   }
-    // }
+  mat-list-item.group-wrapper {
     :hover {
       background: #4f3e70;
       cursor: pointer;
+    }
+  }
+  // p.message.mat-line {
+  //   color: #4f3e70;
+  //   white-space: unset !important;
+
+  // }
+  mat-list.message-body {
+    margin-top: 10px;
+  }
+  mat-list-item.messages-list {
+    margin-bottom: 35px;
+    .mat-list-text {
+      background: #F2F2F2;
+      padding: 20px !important;
+      border-radius: 45px;
+      margin-left: 5px;
+      height: 100px;
+      overflow: scroll;
     }
   }
   mat-accordion {
@@ -60,6 +74,16 @@ body {
   }
   .mat-raised-button {
     margin-top: 10px;
+  }
+  emoji-mart {
+    .emoji-mart {
+      position: absolute;
+      bottom: 10vh;
+      right: 1%;
+    }
+  }
+  mat-icon.smiley-toggle:hover {
+    cursor: pointer;
   }
 }
 .landing-wrapper {

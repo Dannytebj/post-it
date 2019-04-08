@@ -7,6 +7,7 @@ const messageSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Group'
   },
+  createdBy: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now }
 })

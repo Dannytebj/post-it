@@ -1,8 +1,33 @@
 <div class="group-chat-wrapper">
   <div class="chat-header">
-    <div class="header-title">Group Name</div>
+    <div class="header-title"><b>{{ groupName }}</b></div>
     <div class="header-actions"></div>
   </div>
-  <div class="chat-body">Body</div>
-  <div class="chat-footer">Footer</div>
+  <div class="chat-body">
+      <mat-list class="message-body">
+          <mat-list-item class="messages-list" *ngFor="let message of messages">
+            <img matListAvatar src="https://www.paramedicmemorial.org/wp-content/uploads/2018/04/placeholder-avatar.png" alt="...">
+             <div class="message-details">
+               <div class="message-details-head">
+                 <span class="left-detail">{{ message.createdBy }}</span>
+                 <span class="right-detail">{{ message.createdAt | date: 'medium' }}</span>
+               </div>
+               <div class="message">{{ message.message }}</div>
+             </div>
+          </mat-list-item>
+        </mat-list>
+  </div>
+  <div class="chat-footer">
+      <mat-form-field appearance="standard">
+          <mat-label>Type a message</mat-label>
+          <input matInput #message maxlength="256" placeholder="Message" [(ngModel)] = "inputText">
+          <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+        </mat-form-field>
+        <div *ngIf="showEmoji" class="emoji-wrapper">
+            <emoji-mart (emojiClick)="addEmoji($event)" (appClickElseWhere) = "handleClickOutside($event)"></emoji-mart>
+        </div>
+        <span class="icon-wrapper" #smileyToggle>
+          <mat-icon class="smiley-toggle" matSuffix (click)="toggleEmoji()">sentiment_very_satisfied</mat-icon>
+        </span> 
+    </div>
 </div>

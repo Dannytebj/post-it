@@ -92,3 +92,28 @@ exports.groupUsers = async (req, res, next) => {
     next(error);
   }
 }
+
+exports.group = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const groupExists = await Group.findOne({ _id: id });
+    if (!groupExists) {
+      return res.status(404).send({
+        message: 'This group does not exist',
+      });
+    }
+    const group = await Group.findOne({ _id: id })
+      .select('-messages')
+      .populate('users', '-groups')
+      .populate('createdBy', 'name');
+
+    return res.status(200).send({
+      message: 'Fetched successfully',
+      group
+    }); 
+
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+}

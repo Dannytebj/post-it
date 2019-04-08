@@ -51,3 +51,18 @@ exports.groupValidator =  (req, res, next) => {
     }
   });
 }
+exports.messageValidator =  (req, res, next) => {
+  let schema = Joi.object().keys({
+    groupId: Joi.string().trim().required().error(() => 'Group is required'),
+    message: Joi.string().trim().required().error(() => 'Message is required')
+  });
+
+  Joi.validate(req.body, schema, (error, data) => {
+    if (error) {
+      const message = error.details[0].message;
+      res.status(400).send({ message });
+    } else {
+      next();
+    }
+  });
+}

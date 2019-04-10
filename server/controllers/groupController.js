@@ -93,6 +93,58 @@ exports.groupUsers = async (req, res, next) => {
   }
 }
 
+exports.usersNotInGroup = async (req, res,next) => {
+  const { id } = req.params;
+  try {
+    const group = await Group.findOne({ _id: id });
+    if (!group) {
+      return res.status(404).send({
+        message: 'This group does not exist',
+      });
+    }
+    const groupUsers = await Group.findOne({ _id: id }).select('users');
+    const potentialGroupUsers = await User.find({
+      '_id': {
+        $not: {
+        $in: groupUsers.users
+      }
+    }
+    })
+   return res.status(200).send({
+      users: potentialGroupUsers
+    });
+  }  catch (error) {
+    next(error);
+  }
+}
+
+exports.addUserToGroup = async (req, res, next) => {
+  const { groupId, userId } = req.body;
+  try {
+    const group = await Group.findOne({ _id: groupId });
+    if (!group) {
+      return res.status(404).send({
+        message: 'This group does not exist',
+      });
+    }
+    const groupUsers = await Group.findOne({ _id: groupId });
+    groupUsers.users.push(userId);
+    await groupUsers.save();
+
+    const user = await User.findOne({ _id: userId });
+    user.groups.push(groupId);
+    await user.save();
+
+    return res.status(200).send({
+      message: 'User added successfully'
+    });
+
+  } catch(error) {
+    console.log(error)
+    next(error);
+  }
+}
+
 exports.group = async (req, res, next) => {
   const { id } = req.params;
   try {

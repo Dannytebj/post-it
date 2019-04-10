@@ -59,7 +59,7 @@ export class AuthService {
     return this.fireAuth.auth.createUserWithEmailAndPassword(email, password)
       .then(({ user }) => {
         this.setUserData(user, name);
-        this.currentUser.displayName = name;
+        // this.currentUser.displayName = name;
         this.createUser(user.email, name).subscribe((res: AllResponse) => {
           this.header = new HttpHeaders().set('token', res.token);
           localStorage.setItem('token', res.token);

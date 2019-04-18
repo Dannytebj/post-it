@@ -9,7 +9,8 @@ import {
   MatTooltipModule,
   MatDialogModule,
   MatExpansionModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatMenuModule
  } from '@angular/material';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -29,6 +30,7 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
     MatDialogModule,
     MatExpansionModule,
     PickerModule,
+    MatMenuModule,
     MatProgressSpinnerModule
   ],
   exports: [
@@ -44,6 +46,7 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
     MatDialogModule,
     MatExpansionModule,
     PickerModule,
+    MatMenuModule,
     MatProgressSpinnerModule
   ]
 })

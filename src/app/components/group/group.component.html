@@ -1,21 +1,35 @@
 <div class="group-chat-wrapper">
   <div class="chat-header">
     <div class="header-title"><b>{{ groupName }}</b></div>
-    <div class="header-actions"></div>
+    <div class="header-actions">
+      <button mat-button (click)="toggleAddUserDropdown()">{{ actionTitle }}</button>
+      <div [className]="showAddUserDropdown ? 'add-user-dropdown toggled' : 'add-user-dropdown'" >
+        <div *ngIf="notGroupUsers.length > 0; else noUsers;">
+          <p>Users not in group</p>
+          <hr />
+          <div class="user-info" *ngFor="let user of notGroupUsers; let i=index;">
+            <span class="user-name">{{ user.name }}</span>
+              <button mat-raised-button color="primary" (click)="addUser(user._id, i)">add user</button>
+          </div>    
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="chat-body">
-      <mat-list class="message-body">
-          <mat-list-item class="messages-list" *ngFor="let message of messages">
-            <img matListAvatar src="https://www.paramedicmemorial.org/wp-content/uploads/2018/04/placeholder-avatar.png" alt="...">
-             <div class="message-details">
-               <div class="message-details-head">
-                 <span class="left-detail">{{ message.createdBy }}</span>
-                 <span class="right-detail">{{ message.createdAt | date: 'medium' }}</span>
+  <div *ngIf="messages.length > 0; else noMessage;">
+    <div class="chat-body">
+        <mat-list class="message-body">
+            <mat-list-item class="messages-list" *ngFor="let message of messages">
+              <img matListAvatar src="https://www.paramedicmemorial.org/wp-content/uploads/2018/04/placeholder-avatar.png" alt="...">
+               <div class="message-details">
+                 <div class="message-details-head">
+                   <span class="left-detail">{{ message.createdBy }}</span>
+                   <span class="right-detail">{{ message.createdAt | date: 'medium' }}</span>
+                 </div>
+                 <div class="message">{{ message.message }}</div>
                </div>
-               <div class="message">{{ message.message }}</div>
-             </div>
-          </mat-list-item>
-        </mat-list>
+            </mat-list-item>
+          </mat-list>
+    </div>
   </div>
   <div class="chat-footer">
       <mat-form-field appearance="standard">
@@ -31,3 +45,11 @@
         </span> 
     </div>
 </div>
+<ng-template #noUsers>
+  <div class="no-users">We're all here :) !!</div>
+</ng-template>
+<ng-template #noMessage>
+  <div class="no-msgs">
+    <h1>It's quiet in here :( !!</h1>
+  </div>
+</ng-template>

@@ -12,10 +12,9 @@ import { AllResponse } from './../../shared/interfaces/response.interface';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit, OnDestroy {
+export class DashboardComponent implements OnInit {
   createGroupForm = new FormControl('', [Validators.required]);
   loading = true;
-
   groups = [];
   constructor(
     public dialog: MatDialog,
@@ -54,10 +53,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
       ({ error }) => {
         console.log(error.message);
       });
-  }
-
-  ngOnDestroy() {
-
   }
 
 }

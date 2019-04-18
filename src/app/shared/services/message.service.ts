@@ -7,7 +7,8 @@ import { BaseService } from './base.service';
   providedIn: 'root'
 })
 export class MessageService {
-  private url = 'http://localhost:3333';
+  // private url = 'http://localhost:3333';
+  private url = 'https://post-it-v2.herokuapp.com'; // production url
   public socket;
 
   constructor(

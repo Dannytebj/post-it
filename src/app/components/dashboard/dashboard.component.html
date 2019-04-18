@@ -27,21 +27,15 @@
                     <button mat-raised-button (click)= "createGroup()">Create</button>
                   </mat-expansion-panel>
               </mat-accordion>
-              
-          <!-- <button 
-            mat-icon-button
-            matTooltip="Create a group"
-            (click) = "openDialog()"
-          >
-            <mat-icon class="example-tab-icon" color="white">add_circle</mat-icon> 
-          </button>-->
           </div>
               <mat-list *ngIf="!loading; else loader;">
-                <mat-list-item *ngFor="let group of groups" class="group-wrapper" [routerLink]="[{ outlets: {chat: ['group', group._id]}}]">
-                      <mat-icon mat-list-icon>people</mat-icon>
-                      <p mat-line class="group-name">{{ group.name }}</p>
-                      <mat-divider></mat-divider>
-                  </mat-list-item>
+                <div *ngIf="groups.length > 0; else noGroup;">
+                  <mat-list-item *ngFor="let group of groups" class="group-wrapper" [routerLink]="[{ outlets: {chat: ['group', group._id]}}]">
+                        <mat-icon mat-list-icon>people</mat-icon>
+                        <p mat-line class="group-name">{{ group.name }}</p>
+                        <mat-divider></mat-divider>
+                    </mat-list-item>
+                </div>
               </mat-list>
           </div>
         </mat-drawer>
@@ -58,4 +52,7 @@
       mode="indeterminate"
     >
     </mat-progress-spinner>
+</ng-template>
+<ng-template #noGroup>
+  <h2>Start by creating a group and adding users!</h2>
 </ng-template>

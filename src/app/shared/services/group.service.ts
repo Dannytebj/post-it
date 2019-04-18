@@ -52,4 +52,11 @@ private createGroupSubject = new Subject<any>();
   getGroup(id) {
     return this.baseService.http.get(`${this.baseUrl}group/${id}`, { headers: this.baseService.header });
   }
+  getUsersNotInGroup (id) {
+    return this.baseService.http.get(`${this.baseUrl}group/notUsers/${id}`,  { headers: this.baseService.header });
+  }
+
+  addUserToGroup(groupId, userId) {
+    return this.baseService.http.post(`${this.baseUrl}group/user/add`, { groupId, userId }, { headers:  this.baseService.header });
+  }
 }

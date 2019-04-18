@@ -2,6 +2,8 @@ import { Component, OnInit, HostListener, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from './../../shared/services/message.service';
 import { GroupService } from './../../shared/services/group.service';
+import { ToastrService } from 'ngx-toastr';
+
 import { GroupResponse } from './../../shared/interfaces/group.interface';
 
 @Component({
@@ -13,9 +15,12 @@ export class GroupComponent implements OnInit {
 groupId: string;
 groupName: string;
 inputText = '';
+actionTitle = '';
 messages = [];
 groupUsers = [];
+notGroupUsers = [];
 showEmoji: boolean;
+showAddUserDropdown: boolean;
 KEY_CODES = {
   ENTER: 13
 };
@@ -23,16 +28,20 @@ KEY_CODES = {
     public route: ActivatedRoute,
     public messageService: MessageService,
     public groupService: GroupService,
-    private el: ElementRef
+    private el: ElementRef,
+    public toastr: ToastrService
     ) { }
 
   ngOnInit() {
+    this.actionTitle = (this.showAddUserDropdown) ? 'close' : 'Add user';
+
     this.route.params.subscribe(params => {
+      this.messages = [];
       this.groupId = params['id'];
       this.getGroupData();
+      this.usersNotInGroup();
       this.messageService.getMessages(this.groupId).subscribe((res: any) => {
         this.messages = [...this.messages, ...res.messages];
-        console.log(res);
       });
       this.getNewMessage(this.groupId);
     });
@@ -40,15 +49,13 @@ KEY_CODES = {
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
     if (event.keyCode === this.KEY_CODES.ENTER) {
-      console.log(this.inputText);
       this.messageService.sendMessage(this.inputText, this.groupId)
         .subscribe(
           (response) => {
             this.inputText = '';
-            // console.log(response);
           },
           (error) => {
-
+            this.toastr.error(error);
           });
     }
   }
@@ -89,6 +96,27 @@ KEY_CODES = {
   }
   toggleEmoji() {
     return this.showEmoji = !this.showEmoji;
+  }
+  toggleAddUserDropdown() {
+    this.actionTitle = (!this.showAddUserDropdown) ? 'close' : 'Add user';
+    return this.showAddUserDropdown = !this.showAddUserDropdown;
+  }
+
+  usersNotInGroup() {
+    this.groupService.getUsersNotInGroup(this.groupId).subscribe((data: any) => {
+      this.notGroupUsers = data.users;
+    });
+  }
+
+  addUser(id, index) {
+    this.groupService.addUserToGroup(this.groupId, id).subscribe(
+      (res: any) => {
+        this.toastr.success(res.message);
+        this.notGroupUsers.splice(index, 1);
+    }, (err) => {
+      this.toastr.error(err);
+      console.log(err);
+    });
   }
 
 }

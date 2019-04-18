@@ -21,6 +21,13 @@ body {
       cursor: pointer;
     }
   }
+  mat-menu.mat-menu-panel {
+    // display: flex;
+    width: 200px !important;
+    .new-user {
+      display: flex;
+    }
+  }
   // p.message.mat-line {
   //   color: #4f3e70;
   //   white-space: unset !important;
@@ -122,5 +129,8 @@ body {
   }
   .toggler {
     display:block;
+  }
+  .message-details-head {
+    font-size: 7px !important;
   }
 }

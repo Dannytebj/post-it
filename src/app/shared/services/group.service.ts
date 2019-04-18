@@ -8,7 +8,9 @@ import { Observable, Subject } from 'rxjs';
 })
 export class GroupService {
 header: HttpHeaders;
-baseUrl = 'http://localhost:3333/api/v1/';
+// baseUrl = 'http://localhost:3333/api/v1/';
+baseUrl = 'https://post-it-v2.herokuapp.com/api/v1/';
+
 private createGroupSubject = new Subject<any>();
 
   constructor(

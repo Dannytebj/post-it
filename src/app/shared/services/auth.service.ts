@@ -11,7 +11,9 @@ import { AllResponse } from '../interfaces/response.interface';
 })
 export class AuthService {
   currentUser: any;
-  baseUrl = 'http://localhost:3333/api/v1/';
+  // baseUrl = 'http://localhost:3333/api/v1/';
+  baseUrl = 'https://post-it-v2.herokuapp.com/api/v1/';
+
   public header: HttpHeaders;
   constructor(
     public firestore: AngularFirestore,

@@ -4,15 +4,15 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const path = require('path');
 const socketio = require('socket.io');
-const { socketInstance } = require('./utils/socketConfig');
+const { socketInstance } = require('./server/utils/socketConfig');
 
 dotenv.config();
 
 const app = express();
-const routes = require('./routes');
+const routes = require('./server/routes');
 const port = process.env.PORT || 3333;
 
-const config = require('./config');
+const config = require('./server/config');
 // allow promises with mongoose.
 mongoose.Promise = global.Promise;
 
@@ -31,7 +31,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(express.static(__dirname+'/dist/client'));
+app.use(express.static(__dirname+'/dist/post-it-v2'));
 
 app.use('/api/v1', routes);
 
@@ -41,9 +41,9 @@ app.use((err, req, res, next) => {
     .send({ message: 'An error occured' })
 });
 
-// app.get('/*', function(req,res) {
-//   res.sendFile(path.join(__dirname+'/dist/client/index.html'))
-// })
+app.get('/*', function(req,res) {
+  res.sendFile(path.join(__dirname+'/dist/post-it-v2/index.html'))
+})
 
 // start the server in the port || 3333 !
 const server = app.listen(port, () => {

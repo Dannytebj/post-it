@@ -7,8 +7,8 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "node server/server.js",
-    "start:dev": "concurrently \"babel-watch server/server.js \" \" ng serve\"",
+    "start": "node server.js",
+    "start:dev": "concurrently \"babel-watch server.js \" \" ng serve\"",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

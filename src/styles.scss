@@ -99,7 +99,13 @@ body {
   margin: 0;
 
   .landing-left {
-    width: 35%;
+    width: 30%;
+    .banner {
+      background: #673ab7;
+      padding: 15px;
+      color: white;
+      margin-top: 0;
+    }
     .auth-form-wrapper {
       margin: 30% 25%;
     }
@@ -109,8 +115,8 @@ body {
     }
   }
   .landing-right {
-    width: 65%;
-    background: url('../src/assets/img/ch.jpg') no-repeat;
+    width: 70%;
+    background: url('../src/assets/img/bg2.jpg') no-repeat;
     background-size: cover;
   }
 
